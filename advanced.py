@@ -12,38 +12,38 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-    /* Main background */
+    /* Main app background */
     .stApp {
         background-color: black;
-        color: black;
+        color: white;
     }
 
-    /* Sidebar background */
-    .css-1d391kg {
+    /* Sidebar */
+    [data-testid="stSidebar"] {
         background-color: #111111;
-        color: black;
+        color: white;
     }
 
-    /* Metric card text */
-    .stMetricValue, .stMetricDelta {
-        color: black !important;
+    /* Metric cards */
+    .stMetric {
+        background-color: #111111 !important;
+        color: white !important;
     }
 
-    /* Card container */
-    .card {
-        background-color: #111111;
-        color: black !important;
+    /* All blocks (columns, containers) */
+    .css-1lcbmhc, .css-1v3fvcr, .css-1adrfps {
+        background-color: #111111 !important;
+        color: white !important;
     }
 
-    /* Other text elements */
-    .stText, .stMarkdown {
-        color: black !important;
+    /* Text */
+    .stText, .stMarkdown, .stHeader {
+        color: white !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 # --- DATA FUNCTIONS ---
 def main_df_construct():
     db = sqlite3.connect(r'resto.db')
@@ -257,6 +257,7 @@ else:
 
 # --- FOOTER ---
 st.markdown("<p style='text-align:center; font-size:14px; color:white;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
+
 
 
 
