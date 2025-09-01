@@ -31,13 +31,13 @@ st.markdown(
 
     /* Card container */
     .card {
-        background-color: #1e1e1e;
+        background-color: #111111;
         color: black !important;
     }
 
     /* Other text elements */
     .stText, .stMarkdown {
-        color: white !important;
+        color: black !important;
     }
     </style>
     """,
@@ -256,7 +256,8 @@ else:
     st.info("Aucun revenu disponible")
 
 # --- FOOTER ---
-st.markdown("<p style='text-align:center; font-size:14px; color:black;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center; font-size:14px; color:white;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
+
 
 
 
