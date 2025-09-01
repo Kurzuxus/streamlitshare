@@ -111,6 +111,14 @@ def revenue_per_day(df):
     daily_revenue = df.groupby(df['time'].dt.date)['order_total'].sum()
     return daily_revenue
 
+# --- FUNCTION TO MAKE AXES WHITE ---
+def update_axes_white(fig):
+    fig.update_layout(
+        xaxis=dict(title_font_color='white', tickfont_color='white'),
+        yaxis=dict(title_font_color='white', tickfont_color='white')
+    )
+    return fig
+
 # --- DASHBOARD ---
 st.markdown("<h1 style='text-align:center; color:black;'>🍽️ Tableau de Commandes du Restaurant</h1>", unsafe_allow_html=True)
 
@@ -146,6 +154,7 @@ with col1:
         top_items = filtered_deserialized_df.groupby("name")["count"].sum().reset_index().sort_values(by="count", ascending=False)
         fig_items = px.bar(top_items.head(10), x="name", y="count", color="name", title=f"Top 10 Articles Vendus ({filter_option})")
         fig_items.update_layout(showlegend=False)
+        fig_items = update_axes_white(fig_items)
         st.plotly_chart(fig_items, use_container_width=True)
     else:
         st.info(f"Aucune donnée de commandes disponible pour {filter_option.lower()}")
@@ -155,6 +164,7 @@ with col2:
     if not top_categories.empty:
         fig_cat = px.pie(values=top_categories.values, names=top_categories.index,
                          title=f"Catégories les plus commandées ({filter_option})", hole=0.4)
+        fig_cat = update_axes_white(fig_cat)
         st.plotly_chart(fig_cat, use_container_width=True)
     else:
         st.info(f"Aucune donnée de catégorie disponible pour {filter_option.lower()}")
@@ -168,8 +178,7 @@ if not orders_per_day.empty:
         y=orders_per_day.values,
         title="Nombre de commandes par jour"
     )
-    fig_orders.update_xaxes(title="Date")
-    fig_orders.update_yaxes(title="Commandes")
+    fig_orders = update_axes_white(fig_orders)
     st.plotly_chart(fig_orders, use_container_width=True)
 else:
     st.info("Aucun historique de commandes disponible")
@@ -181,6 +190,7 @@ with col1:
         filtered_deserialized_df["total_price"] = filtered_deserialized_df["count"] * filtered_deserialized_df["price"]
         cat_rev = filtered_deserialized_df.groupby("category")["total_price"].sum().reset_index()
         fig_rev = px.bar(cat_rev, x="category", y="total_price", color="category", title=f"Revenu par catégorie ({filter_option})")
+        fig_rev = update_axes_white(fig_rev)
         st.plotly_chart(fig_rev, use_container_width=True)
     else:
         st.info(f"Aucun revenu disponible pour {filter_option.lower()}")
@@ -189,6 +199,7 @@ with col2:
     if not filtered_deserialized_df.empty:
         cat_count = filtered_deserialized_df.groupby("category")["count"].sum().reset_index()
         fig_count = px.bar(cat_count, x="category", y="count", color="category", title=f"Articles commandés par catégorie ({filter_option})")
+        fig_count = update_axes_white(fig_count)
         st.plotly_chart(fig_count, use_container_width=True)
     else:
         st.info(f"Aucune donnée de catégorie disponible pour {filter_option.lower()}")
@@ -200,6 +211,7 @@ with col1:
     if not table_stats.empty:
         fig_table = px.bar(x=table_stats.index, y=table_stats.values,
                            title=f"Commandes par table ({filter_option})", labels={"x": "Table", "y": "Commandes"})
+        fig_table = update_axes_white(fig_table)
         st.plotly_chart(fig_table, use_container_width=True)
     else:
         st.info(f"Aucune donnée de table disponible pour {filter_option.lower()}")
@@ -209,6 +221,7 @@ with col2:
     if not waiter_stats.empty:
         fig_waiter = px.bar(x=waiter_stats.index, y=waiter_stats.values,
                             title=f"Commandes par serveur ({filter_option})", labels={"x": "Serveur", "y": "Commandes"})
+        fig_waiter = update_axes_white(fig_waiter)
         st.plotly_chart(fig_waiter, use_container_width=True)
     else:
         st.info(f"Aucune donnée de serveur disponible pour {filter_option.lower()}")
@@ -223,6 +236,10 @@ if not daily_revenue.empty:
         labels={"x": "Date", "y": "Revenu ($)"}
     )
     fig_revenue.update_yaxes(tickprefix="$")
+    fig_revenue = update_axes_white(fig_revenue)
     st.plotly_chart(fig_revenue, use_container_width=True)
 else:
     st.info("Aucun revenu disponible")
+
+# --- FOOTER ---
+st.markdown("<p style='text-align:center; font-size:14px; color:black;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
