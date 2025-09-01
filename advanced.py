@@ -15,24 +15,24 @@ st.markdown(
     /* Main background */
     .stApp {
         background-color: black;
-        color: white;
+        color: black;
     }
 
     /* Sidebar background */
     .css-1d391kg {
         background-color: #111111;
-        color: white;
+        color: black;
     }
 
     /* Metric card text */
     .stMetricValue, .stMetricDelta {
-        color: white !important;
+        color: black !important;
     }
 
     /* Card container */
     .card {
         background-color: #1e1e1e;
-        color: white !important;
+        color: black !important;
     }
 
     /* Other text elements */
@@ -257,5 +257,6 @@ else:
 
 # --- FOOTER ---
 st.markdown("<p style='text-align:center; font-size:14px; color:black;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
+
 
 
