@@ -12,18 +12,32 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400;600&display=swap');
-    * {
-        font-family: 'Edu NSW ACT Foundation', cursive !important;
+    /* Main background */
+    .stApp {
+        background-color: black;
+        color: white;
+    }
+
+    /* Sidebar background */
+    .css-1d391kg {
+        background-color: #111111;
+        color: white;
+    }
+
+    /* Metric card text */
+    .stMetricValue, .stMetricDelta {
         color: white !important;
     }
+
+    /* Card container */
     .card {
-        background-color: white;
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        color: black !important;
+        background-color: #1e1e1e;
+        color: white !important;
+    }
+
+    /* Other text elements */
+    .stText, .stMarkdown {
+        color: white !important;
     }
     </style>
     """,
@@ -243,4 +257,5 @@ else:
 
 # --- FOOTER ---
 st.markdown("<p style='text-align:center; font-size:14px; color:black;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
+
 
