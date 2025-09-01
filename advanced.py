@@ -15,7 +15,7 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400;600&display=swap');
     * {
         font-family: 'Edu NSW ACT Foundation', cursive !important;
-        color: black !important;
+        color: white !important;
     }
     .card {
         background-color: white;
@@ -120,7 +120,7 @@ def update_axes_white(fig):
     return fig
 
 # --- DASHBOARD ---
-st.markdown("<h1 style='text-align:center; color:black;'>🍽️ Tableau de Commandes du Restaurant</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:white;'>🍽️ Tableau de Commandes du Restaurant</h1>", unsafe_allow_html=True)
 
 # --- DATE FILTER DROPDOWN ---
 filter_option = st.selectbox(
@@ -243,3 +243,4 @@ else:
 
 # --- FOOTER ---
 st.markdown("<p style='text-align:center; font-size:14px; color:black;'>Créé avec ❤️ Streamlit + Plotly</p>", unsafe_allow_html=True)
+
